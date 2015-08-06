@@ -5,6 +5,16 @@
     <title>Calculate It!</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <style type="text/css">
+    body {
+        font-family: 'Microsoft JhengHei', sans-serif;
+    }
+    
+    section {
+        background-color: #f0ad4e;
+        border-radius: 5px
+    }
+    </style>
     <script>
     function init() {
         generateQuiz();
@@ -12,7 +22,7 @@
     }
 
     function setTarget() {
-        target = prompt("請輸入要練習的題數：", "")
+        target = window.prompt("請輸入要練習的題數：", "")
 
         targetText = document.getElementById("target")
         targetText.innerHTML = target.toString()
@@ -95,31 +105,35 @@
 <body>
     <div class="container" style="text-align: center">
         <h1>Calculate Game!</h1>
-        <h1>題目</h1>
-        <h3 id="quiz"></h1>
-        <input id="answer" value="" onkeypress="handleKeyPress(event)" autofocus></input>
+        <section>
+            <h1>題目</h1>
+            <h3 id="quiz"></h1>
+        <input id="answer" value="" onkeypress="handleKeyPress(event)" placeholder="請輸入答案" autofocus></input>
         </p>
         <button id="ansBtn" class="btn btn-success" onclick="checkAnswer()">Check Answer!</button>
+        </section>
+        <section>
         <h1>記錄板</h1>
         <div class="row">
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                 <h2>總題數</h2>
                 <h3 id="target">0</p>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                 <h2>正確題數</h2>
                 <h3 id="right">0</p>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                 <h2>錯誤題數</h2>
                 <h3 id="wrong">0</p>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                 <h2>花費總時間</h2>
                 <h3 id="counter">0.0</h1>
                 <h3 id="finalTime" style="display: none">0.0</h1>
             </div>
         </div>
+        </section>
     </div>
     <script type="text/javascript">
     window.onload = init()
