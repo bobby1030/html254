@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Calculate It!</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script>
+    function init() {
+        generateQuiz();
+        setTarget()
+    }
+
+    function setTarget() {
+        target = prompt("請輸入要練習的題數：", "")
+
+        targetText = document.getElementById("target")
+        targetText.innerHTML = target.toString()
+        right = 0
+        wrong = 0
+        timer()
+
+
+    }
+
+    function checkAnswer() {
+
+        var resultRight = document.getElementById("right")
+        var resultWrong = document.getElementById("wrong")
+        var answer = document.getElementById("answer").value;
+        var answerArea = document.getElementById("answer")
+        var ansBtn = document.getElementById("ansBtn");
+        var answerContent = answer.toString()
+        var rightAnswer = q1 * q2
+        if (answerContent == rightAnswer) {
+            alert('答案正確!')
+            right = right + 1;
+            resultRight.innerHTML = right.toString()
+
+        } else {
+            alert('答案錯誤!')
+            wrong = wrong + 1;
+            resultWrong.innerHTML = wrong.toString()
+        };
+        finisher()
+        generateQuiz();
+        answerArea.value = ""
+    };
+
+    function generateQuiz() {
+        q1 = Math.floor((Math.random() * 10) + 1);
+        q2 = Math.floor((Math.random() * 10) + 1);
+        var content = document.getElementById("quiz");
+        content.innerHTML = (q1 + "*" + q2)
+
+    }
+
+    function handleKeyPress(e) {
+        var key = e.keyCode || e.which;
+        if (key == 13) {
+            checkAnswer();
+        }
+    }
+
+    function timer(run = true) {
+        if (run == true) {
+            finalTime = null
+            counter = document.getElementById("counter");
+            counterContent = counter.innerHTML
+            counterNum = parseFloat(counterContent)
+            num = (counterNum + 0.1).toFixed(1);
+            stringNum = num.toString()
+            counter.innerHTML = stringNum;
+            finalTime = stringNum
+            setTimeout('timer()', 100)
+        } else {
+            finalTimeText = document.getElementById("finalTime");
+            counter.style.display = "none";
+            finalTimeText.style.display = "";
+            finalTimeText.innerHTML = finalTime
+
+        }
+
+    }
+
+    function finisher() {
+        if (right + wrong == target) {
+            timer(false)
+            alert("遊戲結束！")
+        };
+    }
+    </script>
+</head>
+
+<body>
+    <div class="container" style="text-align: center">
+        <h1>Calculate Game!</h1>
+        <h1>題目</h1>
+        <h3 id="quiz"></h1>
+        <input id="answer" value="" onkeypress="handleKeyPress(event)" autofocus></input>
+        </p>
+        <button id="ansBtn" class="btn btn-success" onclick="checkAnswer()">Check Answer!</button>
+        <h1>記錄板</h1>
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <h2>總題數</h2>
+                <h3 id="target">0</p>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <h2>正確題數</h2>
+                <h3 id="right">0</p>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <h2>錯誤題數</h2>
+                <h3 id="wrong">0</p>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <h2>花費總時間</h2>
+                <h3 id="counter">0.0</h1>
+                <h3 id="finalTime" style="display: none">0.0</h1>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    window.onload = init()
+    </script>
+</body>
+
+</html>
