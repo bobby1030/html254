@@ -64,7 +64,7 @@ function timer(run) {
         finalTimeText = document.getElementById("finalTime");
         counter.style.display = "none";
         finalTimeText.style.display = "";
-        finalTimeText.innerHTML = finalTime
+        finalTimeText.innerHTML = finalTime + " 秒"
 
     }
 

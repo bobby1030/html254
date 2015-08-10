@@ -20,18 +20,26 @@
 
 <body>
     <div class="container" style="text-align: center">
-        <h1>Calculate Game!</h1>
-        <div class="alert alert-success" role="alert" id="targetSuccess" style="display: none;font-size: 30px;">
-            <strong>目標設定成功！</strong>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1>Calculate Game!</h1>
+            </div>
         </div>
-        <div class="alert alert-success" role="alert" id="answerRight" style="display: none;font-size: 30px;">
-            <strong>答對了！</strong>
-        </div>
-        <div class="alert alert-warning" role="alert" id="answerWrong" style="display: none;font-size: 30px;">
-            <strong>答錯了！</strong>
-        </div>
-        <div class="alert alert-info" role="alert" id="gameFinish" style="display: none;font-size: 30px;">
-            <strong>遊戲結束</strong>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="alert alert-success" role="alert" id="targetSuccess" style="display: none;font-size: 30px;">
+                    <strong>目標設定成功！</strong>
+                </div>
+                <div class="alert alert-success" role="alert" id="answerRight" style="display: none;font-size: 30px;">
+                    <strong>答對了！</strong>
+                </div>
+                <div class="alert alert-warning" role="alert" id="answerWrong" style="display: none;font-size: 30px;">
+                    <strong>答錯了！</strong>
+                </div>
+                <div class="alert alert-info" role="alert" id="gameFinish" style="display: none;font-size: 30px;">
+                    <strong>遊戲結束</strong>
+                </div>
+            </div>
         </div>
         <section id="setTargetArea">
             <input id="SetTarget" value="" onkeypress="handleTargetKeyPress(event)" placeholder="請輸入欲練習的題數" autofocus></input>
@@ -39,27 +47,27 @@
         </section>
         <section id="gameArea">
             <h1>題目</h1>
-            <h3 id="quiz"></h1>
-        <input id="answer" value="" onkeypress="handleAnswerKeyPress(event)" placeholder="請輸入答案" autofocus></input>
-        </p>
-        <button id="ansBtn" class="btn btn-success" onclick="checkAnswer()">Check Answer!</button>
+            <h3 id="quiz"></h3>
+            <input id="answer" value="" onkeypress="handleAnswerKeyPress(event)" placeholder="請輸入答案" autofocus></input>
+            </p>
+            <button id="ansBtn" class="btn btn-success" onclick="checkAnswer()">Check Answer!</button>
         </section>
         <section>
-        <h1>記錄板</h1>
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                <h2>總題數</h2>
-                <h3 id="target">0</p>
+            <h1>記錄板</h1>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                    <h2>總題數</h2>
+                    <h3 id="target">0</p>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                 <h2>正確題數</h2>
                 <h3 id="right">0</p>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                 <h2>錯誤題數</h2>
                 <h3 id="wrong">0</p>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                 <h2>花費總時間</h2>
                 <h3 id="counter">0.0</h1>
                 <h3 id="finalTime" style="display: none">0.0</h1>
