@@ -10,6 +10,7 @@ function setTarget() {
     setTargetArea.style.display = "none"
     targetSuccess.style.display = ""
     main()
+    timer(true)
 }
 
 function generateQuiz() {
@@ -57,7 +58,7 @@ function timer(run) {
         stringNum = num.toString()
         counter.innerHTML = stringNum;
         finalTime = stringNum
-        setTimeout('timer()', 100)
+        setTimeout('timer(true)', 100)
     } else {
         finalTimeText = document.getElementById("finalTime");
         counter.style.display = "none";
@@ -97,7 +98,7 @@ function handleTargetKeyPress(e) {
 function main() {
     document.getElementById("answer").focus();
     targetSuccess.style.display = "none"
-    timer(true)
+
     generateQuiz()
     finisher()
 }
