@@ -15,100 +15,32 @@
         border-radius: 5px
     }
     </style>
-    <script>
-    function init() {
-        generateQuiz();
-        setTarget()
-    }
-
-    function setTarget() {
-        target = window.prompt("請輸入要練習的題數：", "")
-
-        targetText = document.getElementById("target")
-        targetText.innerHTML = target.toString()
-        right = 0
-        wrong = 0
-        timer()
-
-
-    }
-
-    function checkAnswer() {
-
-        var resultRight = document.getElementById("right")
-        var resultWrong = document.getElementById("wrong")
-        var answer = document.getElementById("answer").value;
-        var answerArea = document.getElementById("answer")
-        var ansBtn = document.getElementById("ansBtn");
-        var answerContent = answer.toString()
-        var rightAnswer = q1 * q2
-        if (answerContent == rightAnswer) {
-            alert('答案正確!')
-            right = right + 1;
-            resultRight.innerHTML = right.toString()
-
-        } else {
-            alert('答案錯誤!')
-            wrong = wrong + 1;
-            resultWrong.innerHTML = wrong.toString()
-        };
-        finisher()
-        generateQuiz();
-        answerArea.value = ""
-    };
-
-    function generateQuiz() {
-        q1 = Math.floor((Math.random() * 10) + 1);
-        q2 = Math.floor((Math.random() * 10) + 1);
-        var content = document.getElementById("quiz");
-        content.innerHTML = (q1 + "*" + q2)
-
-    }
-
-    function handleKeyPress(e) {
-        var key = e.keyCode || e.which;
-        if (key == 13) {
-            checkAnswer();
-        }
-    }
-
-    function timer(run = true) {
-        if (run == true) {
-            finalTime = null
-            counter = document.getElementById("counter");
-            counterContent = counter.innerHTML
-            counterNum = parseFloat(counterContent)
-            num = (counterNum + 0.1).toFixed(1);
-            stringNum = num.toString()
-            counter.innerHTML = stringNum;
-            finalTime = stringNum
-            setTimeout('timer()', 100)
-        } else {
-            finalTimeText = document.getElementById("finalTime");
-            counter.style.display = "none";
-            finalTimeText.style.display = "";
-            finalTimeText.innerHTML = finalTime
-
-        }
-
-    }
-
-    function finisher() {
-        if (right + wrong == target) {
-            timer(false)
-            alert("遊戲結束！")
-        };
-    }
-    </script>
+    <script src="cal.js"></script>
 </head>
 
 <body>
     <div class="container" style="text-align: center">
         <h1>Calculate Game!</h1>
-        <section>
+        <div class="alert alert-success" role="alert" id="targetSuccess" style="display: none">
+            <strong>目標設定成功！</strong>
+        </div>
+        <div class="alert alert-success" role="alert" id="answerRight" style="display: none">
+            <strong>答對了！</strong>
+        </div>
+        <div class="alert alert-warning" role="alert" id="answerWrong" style="display: none">
+            <strong>答錯了！</strong>
+        </div>
+        <div class="alert alert-info" role="alert" id="gameFinish" style="display: none">
+            <strong>遊戲結束</strong>
+        </div>
+        <section id="setTargetArea">
+            <input id="SetTarget" value="" onkeypress="handleTargetKeyPress(event)" placeholder="請輸入欲練習的題數" autofocus></input>
+            <button id="submitTarget" class="btn btn-success" onclick="setTarget()">設定目標!</button>
+        </section>
+        <section id="gameArea">
             <h1>題目</h1>
             <h3 id="quiz"></h1>
-        <input id="answer" value="" onkeypress="handleKeyPress(event)" placeholder="請輸入答案" autofocus></input>
+        <input id="answer" value="" onkeypress="handleAnswerKeyPress(event)" placeholder="請輸入答案" autofocus></input>
         </p>
         <button id="ansBtn" class="btn btn-success" onclick="checkAnswer()">Check Answer!</button>
         </section>
@@ -135,9 +67,7 @@
         </div>
         </section>
     </div>
-    <script type="text/javascript">
-    window.onload = init()
-    </script>
+    <script src="cal.js"></script>
 </body>
 
 </html>
