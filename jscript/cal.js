@@ -44,6 +44,7 @@ function checkAnswer() {
         resultWrong.innerHTML = wrong.toString()
     };
     answerArea.value = ""
+    targetSuccess.style.display = "none"
     main()
 };
 
@@ -97,8 +98,6 @@ function handleTargetKeyPress(e) {
 
 function main() {
     document.getElementById("answer").focus();
-    targetSuccess.style.display = "none"
-
     generateQuiz()
     finisher()
 }
